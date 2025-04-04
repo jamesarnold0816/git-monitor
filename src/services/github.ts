@@ -19,7 +19,7 @@ export async function fetchFailedPRAuthors(owner: string, repo: string): Promise
     );
 
     const contributors: PRAuthor[] = [];
-
+    console.log(prRes);
     for (const pr of prRes.data) {
       if (pr.merged_at) continue;
 
@@ -28,7 +28,7 @@ export async function fetchFailedPRAuthors(owner: string, repo: string): Promise
         `https://api.github.com/repos/${owner}/${repo}/commits/${sha}/check-runs`, 
         { headers }
       );
-      
+      console.log(statusRes);
       const failed = statusRes.data.check_runs.some((check: any) => check.conclusion === 'failure');
       if (!failed) continue;
 
