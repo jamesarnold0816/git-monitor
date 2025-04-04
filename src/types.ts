@@ -3,5 +3,4 @@ export interface PRAuthor {
   full_name: string;
   email: string;
   commit: string;
-  pr_number: number;
 } 
