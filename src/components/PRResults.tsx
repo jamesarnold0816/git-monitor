@@ -19,13 +19,12 @@ const PRResults: React.FC<PRResultsProps> = ({ results }) => {
               <th>GitHub Username</th>
               <th>Full Name</th>
               <th>Email</th>
-              <th>PR Number</th>
               <th>Commit SHA</th>
             </tr>
           </thead>
           <tbody>
             {results.map((author) => (
-              <tr key={`${author.pr_number}-${author.commit}`}>
+              <tr key={`${author.commit}`}>
                 <td>
                   <a 
                     href={`https://github.com/${author.github}`} 
@@ -37,15 +36,6 @@ const PRResults: React.FC<PRResultsProps> = ({ results }) => {
                 </td>
                 <td>{author.full_name}</td>
                 <td>{author.email}</td>
-                <td>
-                  <a 
-                    href={`https://github.com/${results.length > 0 ? `${results[0].github}/${results[0].commit.split('/')[0]}` : ''}/pull/${author.pr_number}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    #{author.pr_number}
-                  </a>
-                </td>
                 <td>
                   <code>{author.commit.slice(0, 7)}</code>
                 </td>
