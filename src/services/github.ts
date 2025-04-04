@@ -19,7 +19,7 @@ export async function fetchFailedPRAuthors(owner: string, repo: string): Promise
     );
 
     const contributors: PRAuthor[] = [];
-    console.log(prRes);
+    console.log(prRes,'res');
     for (const pr of prRes.data) {
       if (pr.merged_at) continue;
 
