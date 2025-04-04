@@ -21,10 +21,7 @@ export async function fetchFailedPRAuthors(owner: string, repo: string): Promise
 
     for (const pr of prRes.data) {
       if (pr.merged_at) continue;
-
       const sha = pr.sha;
-
-
       // Get commit author info
       const commitRes = await axios.get(
         `https://api.github.com/repos/${owner}/${repo}/commits/${sha}`,
